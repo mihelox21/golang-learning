@@ -14,7 +14,10 @@ from "math module" math.pi is incorrect,
 correct way is math.Pi that means its exported.
 */
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /*
 variables construction:
@@ -72,7 +75,20 @@ to convert variable to another type use assertion T(variable) ex:
 var x int = 42
 r := float64(x)
 
+if you want to declare a constant value you can use "const"
+
+const Factor = 30
+
+consts could not be created using short assignment operator
+
+const are also used to specify very precise numbers (if you wont specify type it will be inferred from context)
 */
+
+const Pi = 3.14
+
+func caclculateCircleArea(radius int) float64 {
+	return Pi * math.Pow(float64(radius), 2)
+}
 
 func main() {
 	var greeting string = "Hello World"
@@ -83,5 +99,9 @@ func main() {
 	var z bool
 	var f string
 	fmt.Printf("defaults %v %v %v %q\n", x, y, z, f)
+
+	const circleRadius = 10
+	circleArea := caclculateCircleArea(circleRadius)
+	fmt.Println("circle area from circle of radius 10: ", circleArea)
 
 }
